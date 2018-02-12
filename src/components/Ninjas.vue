@@ -32,29 +32,29 @@ export default {
   },
 
   // lifecycle hooks
-  beforeCreate() {
-    alert('beforeCreate');
-  },
+  // beforeCreate() {
+  //   alert('beforeCreate');
+  // },
 
-  created() {
-    alert('created');
-  },
+  // created() {
+  //   alert('created');
+  // },
 
-  beforeMount() {
-    alert('beforeMount');
-  },
+  // beforeMount() {
+  //   alert('beforeMount');
+  // },
 
-  mounted() {
-    alert('mounted');
-  },
+  // mounted() {
+  //   alert('mounted');
+  // },
 
-  beforeUpdate() {
-    alert('beforeUpdate');
-  },
+  // beforeUpdate() {
+  //   alert('beforeUpdate');
+  // },
 
-  updated() {
-    alert('updated');
-  }
+  // updated() {
+  //   alert('updated');
+  // }
 }
 </script>
 
