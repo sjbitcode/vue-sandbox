@@ -1,10 +1,10 @@
 <template>
 	<div id="show-blogs">
 		<h1>All Blog Articles</h1>
-		<input type="text" v-model="search" placeholder="search blogs">
+		<input type="text" v-model="search" placeholder="search blogs" />
 		<div v-for="blog in filteredBlogs" class="single-blog">
 			<router-link v-bind:to="'/blog/' + blog.id"><h2>{{ blog.title | to-uppercase }}</h2></router-link>
-			<article>{{ blog.body | snippet }}</article>
+			<article>{{ blog.content | snippet }}</article>
 		</div>
 	</div>
 </template>
@@ -27,8 +27,18 @@ export default {
 	},
 
 	created() {
-		this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
-			this.blogs = data.body.slice(0,10);
+		this.$http.get('https://vue-blog-cba46.firebaseio.com/posts.json')
+		.then(function(data){
+			return data.json();
+		})
+		.then(function(data){
+			var blogsArray = [];
+			for (let key in data) {
+				// add a new field, id, to each object and set it to the firebase key
+				data[key].id = key;
+				blogsArray.push(data[key]);
+			}
+			this.blogs = blogsArray;
 		})
 	}, 
 
